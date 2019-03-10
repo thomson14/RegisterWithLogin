@@ -19,7 +19,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 public class Login extends AppCompatActivity {
 
     MaterialEditText email,password;
-    Button signIn;
+    Button signIn,createAccount;
     FirebaseAuth auth;
     ProgressBar loginProgress;
 
@@ -28,12 +28,22 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        createAccount = findViewById(R.id.btnCreateAccount);
         loginProgress = findViewById(R.id.loginProgress);
         email = findViewById(R.id.emailId);
         password = findViewById(R.id.password);
         signIn = findViewById(R.id.signIn);
         auth = FirebaseAuth.getInstance();
+
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this,SignUp.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
